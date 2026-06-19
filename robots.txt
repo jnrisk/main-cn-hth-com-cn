@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jnrisk.github.io/main-cn-hth-com-cn/sitemap.xml

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pg游戏 · 知识索引库 | 资料整理与信息指南</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+        }
+        body {
+            background: #f2f4f7;
+            min-height: 100vh;
+            padding: 2rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #1e2a3a;
+        }
+        .page-wrapper {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 标题区域 + 目录感描述 */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2.5rem 2.5rem 2rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.04);
+            border: 1px solid #e6eaf0;
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0a1a2b;
+            margin-bottom: 0.6rem;
+        }
+        .hero .sub {
+            font-size: 1.05rem;
+            color: #3d4e63;
+            line-height: 1.6;
+            border-left: 4px solid #7289a7;
+            padding-left: 1rem;
+            margin: 1rem 0 0.8rem 0;
+            background: #f8faff;
+            border-radius: 0 8px 8px 0;
+            padding: 0.75rem 1.2rem;
+        }
+        .hero .bread-hint {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.2rem;
+            margin-top: 1.25rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #d7dde6;
+            font-size: 0.95rem;
+            color: #3f556a;
+        }
+        .hero .bread-hint span {
+            background: #eff2f8;
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid #dce2ec;
+            font-size: 0.85rem;
+        }
+
+        /* 二列卡片布局：说明区 + 提示区 并排 */
+        .info-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.8rem 2rem;
+            border: 1px solid #e1e6ef;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .card h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #162736;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .card h2 i {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #5072a7;
+            border-radius: 10px;
+            margin-right: 0.25rem;
+        }
+        .card p, .card li {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: #2a3f55;
+        }
+        .card ul {
+            padding-left: 1.2rem;
+            margin: 0.6rem 0 0.2rem;
+        }
+        .card ul li {
+            margin-bottom: 0.4rem;
+        }
+        .highlight-box {
+            background: #f7faff;
+            border-radius: 14px;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0 0.2rem;
+            border: 1px solid #dce5f0;
+        }
+
+        /* 相关信息区 – 采用三列网格 + 目录结构 */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0 1.8rem;
+        }
+        .related-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.5rem 1.4rem 1.8rem;
+            border: 1px solid #e0e6ef;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .related-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f263b;
+            border-bottom: 2px solid #e2eaf3;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .related-card h3::before {
+            content: "▹";
+            color: #607d9b;
+            font-size: 1.2rem;
+        }
+        .related-card .item {
+            display: block;
+            padding: 0.4rem 0 0.4rem 0.75rem;
+            border-left: 2px solid #d6dee9;
+            margin-bottom: 0.5rem;
+            font-size: 0.92rem;
+            color: #1d3349;
+            line-height: 1.5;
+        }
+        .related-card .item strong {
+            font-weight: 600;
+            color: #0b1f31;
+        }
+
+        /* 提示块 / faq风格 */
+        .faq-note {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e1e6ef;
+            padding: 1.6rem 2rem;
+            margin: 0.5rem 0 1.8rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.01);
+        }
+        .faq-note h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            color: #0b2338;
+        }
+        .faq-note .question {
+            font-weight: 500;
+            color: #1d3a57;
+            margin: 0.8rem 0 0.2rem;
+        }
+        .faq-note .answer {
+            color: #34506b;
+            padding-left: 0.8rem;
+            border-left: 3px solid #bccbdd;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        /* 链接样式 */
+        a {
+            color: #1f5090;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border 0.15s;
+            font-weight: 500;
+        }
+        a:hover {
+            border-bottom: 1px solid #1f5090;
+        }
+        .inline-link {
+            background: #eef3fc;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+            border-bottom: none;
+        }
+        .inline-link:hover {
+            background: #dbe6f5;
+            border-bottom: none;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin: 2rem 0 0.5rem;
+            padding: 1rem 0 0.8rem;
+            border-top: 1px solid #dde2ec;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4b6179;
+        }
+
+        /* 响应式 */
+        @media (max-width: 780px) {
+            .info-panel {
+                grid-template-columns: 1fr;
+            }
+            .related-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 540px) {
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .card, .faq-note {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+    <!-- hero：目录感 + 索引说明 -->
+    <div class="hero">
+        <h1>📘 pg游戏 · 资料索引与知识库</h1>
+        <div class="sub">
+            本站为 <a href="https://portal-pggaming.com" class="inline-link">pg游戏</a> 相关领域的信息整理与目录页。
+            从资料系统化、文档索引、场景提示等角度，汇集分类摘要与常见问题参考。
+        </div>
+        <div class="bread-hint">
+            <span>📁 目录 · 库</span>
+            <span>🧩 信息结构</span>
+            <span>📌 索引版本 1.2</span>
+            <span>🔍 检索辅助</span>
+        </div>
+    </div>
+
+    <!-- 说明区 + 提示区 并行卡片 -->
+    <div class="info-panel">
+        <div class="card">
+            <h2><i></i> 说明区 · 资料范围</h2>
+            <p>本知识库围绕 <strong>pg游戏</strong> 相关机制、内容分类与常见术语展开。涵盖玩法模式、数值框架、版本演变以及社区整理的部分参考条目。</p>
+            <ul>
+                <li>主题分类：玩法、系统、交互、版本</li>
+                <li>来源类型：官方文档摘要、玩家整理、版本日志</li>
+                <li>结构方式：按模块索引，便于交叉查阅</li>
+            </ul>
+            <div class="highlight-box">
+                ⚡ 当前收录条目约 40+ 项，持续更新结构。如需查阅原始信息源，可参考 <a href="https://portal-pggaming.com" class="inline-link">pg游戏</a> 基础页面。
+            </div>
+        </div>
+        <div class="card">
+            <h2><i></i> 提示区 · 查阅与使用</h2>
+            <p>索引库定位为辅助参考，不替代原始界面。建议读者结合实际界面与文档对比阅读，以下为使用提示：</p>
+            <ul>
+                <li>每个条目附带简要描述与关联标签</li>
+                <li>部分说明包含版本号或更新时间戳</li>
+                <li>引用时请以 <a href="https://portal-pggaming.com">pg游戏</a> 官方信息为准</li>
+                <li>若发现条目偏差，欢迎反馈修正</li>
+            </ul>
+            <p style="margin-top: 0.6rem; background: #f1f6fe; padding: 0.4rem 0.8rem; border-radius: 30px; font-size: 0.9rem; display: inline-block;">📌 检索时建议使用 Ctrl+F 定位</p>
+        </div>
+    </div>
+
+    <!-- 相关信息区：三列目录卡片 -->
+    <div class="related-grid">
+        <div class="related-card">
+            <h3>玩法索引</h3>
+            <div class="item"><strong>· 经典模式</strong> — 回合制/积分框架</div>
+            <div class="item"><strong>· 挑战变体</strong> — 限时/条件进阶</div>
+            <div class="item"><strong>· 赛季结构</strong> — 周期与重置说明</div>
+            <div class="item"><strong>· 协作内容</strong> — 组队/匹配规则</div>
+        </div>
+        <div class="related-card">
+            <h3>系统说明</h3>
+            <div class="item"><strong>· 数值与成长</strong> — 等级/效率曲线</div>
+            <div class="item"><strong>· 界面与交互</strong> — 布局及快捷操作</div>
+            <div class="item"><strong>· 存储与存档</strong> — 同步/备份提示</div>
+            <div class="item"><strong>· 通知与事件</strong> — 常见活动提醒</div>
+        </div>
+        <div class="related-card">
+            <h3>参考条目</h3>
+            <div class="item"><strong>· 版本记录</strong> — 主要更新摘要</div>
+            <div class="item"><strong>· 术语表</strong> — 常用缩写/概念</div>
+            <div class="item"><strong>· 常见问题</strong> — 设置/连接/显示类</div>
+            <div class="item"><strong>· 外部链接</strong> — 社区与文档</div>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 + 提示 (非传统FAQ风格，偏知识型承接) -->
+    <div class="faq-note">
+        <h3>📋 摘录 · 常见信息点</h3>
+        <div class="question">Q：如何快速了解基础规则？</div>
+        <div class="answer">建议先查阅玩法索引中的“经典模式”条目，以及系统说明中的“界面与交互”。<a href="https://portal-pggaming.com">pg游戏</a> 内也提供新手引导入口。</div>
+        <div class="question">Q：版本更新信息在哪里集中？</div>
+        <div class="answer">参考条目中的“版本记录”会汇总大版本变动，同时可关注官方公告。本索引库会同步更新摘要。</div>
+        <div class="question">Q：遇到显示或连接问题？</div>
+        <div class="answer">请先查看“常见问题”分区，包含网络、浏览器兼容、缓存清理等常规步骤。如未解决，建议向支持渠道提供详细信息。</div>
+        <div style="margin-top: 1rem; font-size: 0.9rem; background: #eef3fa; border-radius: 12px; padding: 0.6rem 1rem;">
+            🔗 更多结构化信息可参考 <a href="https://portal-pggaming.com" class="inline-link">pg游戏</a> 知识库主站。
+        </div>
+    </div>
+
+    <!-- 底部分隔 -->
+    <div class="footer-note">
+        <span>资料整理：pg游戏知识索引 · 非官方镜像 · 仅供学习参考</span><br>
+        <span style="opacity: 0.7;">索引构建基于公开信息  ·  内容定期审校</span>
+    </div>
+</div>
+</body>
+</html>

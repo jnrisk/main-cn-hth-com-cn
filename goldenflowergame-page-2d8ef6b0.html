@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于金花 · 炸金花游戏</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #faf9f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+      color: #2c2c2c;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 3rem;
+      width: 100%;
+    }
+
+    /* hero 区域 */
+    .hero {
+      margin-bottom: 3.5rem;
+      border-bottom: 1px solid #e6e3df;
+      padding-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #1e1e1e;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
+    }
+
+    .hero .subhead {
+      font-size: 1.1rem;
+      color: #6b6b6b;
+      font-weight: 360;
+      margin-top: 0.25rem;
+    }
+
+    .hero .meta {
+      margin-top: 1.2rem;
+      font-size: 0.85rem;
+      color: #95938e;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero .meta span {
+      background: #efedea;
+      border-radius: 16px;
+      padding: 2px 14px;
+      font-size: 0.75rem;
+      color: #4f4c48;
+    }
+
+    /* 正文卡片风格 */
+    .section-card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 2rem 2rem 1.8rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .section-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .section-card h2 {
+      font-size: 1.45rem;
+      font-weight: 470;
+      letter-spacing: -0.01em;
+      color: #1f1e1c;
+      margin-bottom: 1rem;
+      border-left: 4px solid #d8d3cc;
+      padding-left: 0.9rem;
+    }
+
+    .section-card p {
+      margin-bottom: 1rem;
+      color: #3d3b38;
+      font-weight: 350;
+    }
+
+    .section-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-card .highlight {
+      background: #f5f3f0;
+      padding: 0.1rem 0.4rem;
+      border-radius: 6px;
+      font-style: normal;
+      color: #2c2a27;
+    }
+
+    /* 引用块——背景说明 */
+    .quote-block {
+      background: #f2efe9;
+      padding: 1.8rem 2rem;
+      border-radius: 24px;
+      margin: 2.5rem 0;
+      font-size: 1rem;
+      color: #35322e;
+    }
+
+    .quote-block p {
+      margin-bottom: 0.6rem;
+    }
+
+    .quote-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .quote-block .attribution {
+      display: block;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #7b7670;
+    }
+
+    /* 内联链接 */
+    a {
+      color: #2d5b3e;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+      font-weight: 400;
+    }
+
+    a:hover {
+      border-bottom-color: #2d5b3e;
+    }
+
+    /* 分隔线 */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: #d4cfc8;
+      margin: 1.8rem 0;
+    }
+
+    /* 页脚 */
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e2ddd7;
+      font-size: 0.9rem;
+      color: #7e7a73;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-note .site-link {
+      font-size: 0.95rem;
+    }
+
+    .footer-note .small-print {
+      opacity: 0.7;
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 580px) {
+      .wrapper { padding: 2.2rem 1.2rem 2.5rem; }
+      .hero h1 { font-size: 2.2rem; }
+      .section-card { padding: 1.5rem 1.2rem; }
+      .quote-block { padding: 1.4rem 1.2rem; }
+      .footer-note { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 1.9rem; }
+      .section-card h2 { font-size: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- hero 标题区 -->
+  <div class="hero">
+    <h1>金花 · 一副牌的叙事</h1>
+    <div class="subhead">关于 <a href="https://goldenflowergame.com">炸金花游戏</a> 的站点笔记</div>
+    <div class="meta">
+      <span>站点手记</span>
+      · 2025 · 简要版
+    </div>
+  </div>
+
+  <!-- 背景说明 用引用卡片 -->
+  <div class="quote-block">
+    <p>几年前，几个朋友习惯在周末的夜晚围坐，用一副牌消磨时间。规则简单，但每一局都有不同的张力——有人沉默，有人虚张声势，有人为了一手好牌不动声色。后来我们把这种氛围搬到了线上。</p>
+    <p>这个网站就是为了延续那种轻松而专注的牌局感。它并非什么大型平台，只是一个记录规则、策略与牌型的小角落。</p>
+    <span class="attribution">—— 项目笔记 · 2024</span>
+  </div>
+
+  <!-- 三段自然介绍 + 一小段 FAQ 摘要 -->
+  <div class="section-card">
+    <h2>不只是比大小</h2>
+    <p>很多人第一眼觉得 <a href="https://goldenflowergame.com">炸金花游戏</a> 全凭运气，但玩过一段时间就会发现，读人、控池、弃牌的节奏同样重要。三张牌的组合变化并不多，可每一次押注背后都是心理与概率的权衡。</p>
+    <p>在网站上，我们整理了最常见的牌型概率、位置策略，以及一些面对不同对手时的思路。不卖课，不兜售必胜法——只是把牌桌上那些值得留意的细节写下来。</p>
+  </div>
+
+  <div class="section-card">
+    <h2>牌型之外，还有场景</h2>
+    <p>无论是周末聚会、长途旅行，还是线上房间里的短暂消遣，<a href="https://goldenflowergame.com">炸金花游戏</a> 总有一种奇特的社交属性：它让陌生人之间快速建立一种默契的竞争关系，也让老友之间多了一些可以调侃的话题。</p>
+    <p>我们也在网站里记录了一些典型的牌桌场景——比如当底池变大时，每个人的表情变化；或者当你拿到豹子时，该如何自然地维持之前的下注节奏。这些都是真实牌局中的小切片。</p>
+  </div>
+
+  <div class="section-card">
+    <h2>FAQ 摘要 · 几个常见疑问</h2>
+    <p><strong>网站是否提供在线对局？</strong><br>
+    目前主要作为资料与说明页面，不包含实时对战功能。但你可以通过规则页面快速了解游戏流程。</p>
+    <p><strong>有 app 或下载吗？</strong><br>
+    暂时没有。我们觉得在浏览器里翻翻规则、看看牌型，已经足够满足大部分人的需求。</p>
+    <p><strong>内容会更新吗？</strong><br>
+    会。后续可能会加入更多牌局案例和常见错误分析，保持缓慢但有价值的更新节奏。</p>
+    <div class="divider"></div>
+    <p style="font-size:0.95rem;">如果你想从头了解 <a href="https://goldenflowergame.com">炸金花游戏</a> 的基本规则与牌型，可以直接去站点里翻一翻。内容很轻，但都是认真写的。</p>
+  </div>
+
+  <!-- 页尾 -->
+  <div class="footer-note">
+    <div class="site-link">
+      <a href="https://goldenflowergame.com">炸金花游戏</a> · 一副牌的叙事
+    </div>
+    <div class="small-print">
+      非官方 · 仅作介绍与记录
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
